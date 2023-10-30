@@ -16,27 +16,27 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         DB::table('posts')->insert([
-            "title"=>"Primer post",
-            "text"=>"Este es el texto del primer post",
-            "posted"=>true,
+            "titulo"=>"Primer post",
+            "texto"=>"Este es el texto del primer post",
+            "publicado"=>true,
             "created_at"=>now(),
             "user_id"=>User::all()->random()->id,
             "category_id"=>Categories::all()->random()->id,
             "department_id"=>Department::all()->random()->id
         ]);
         DB::table('posts')->insert([
-            "title"=>"Segundo post",
-            "text"=>"Este es el texto del segundo post",
-            "posted"=>true,
+            "titulo"=>"Segundo post",
+            "texto"=>"Este es el texto del segundo post",
+            "publicado"=>true,
             "created_at"=>now(),
             "user_id"=>User::all()->random()->id,
             "category_id"=>Categories::all()->random()->id,
             "department_id"=>Department::all()->random()->id
         ]);
         DB::table('posts')->insert([
-            "title"=>"Tercer post",
-            "text"=>"Este es el texto del tercer post",
-            "posted"=>true,
+            "titulo"=>"Tercer post",
+            "texto"=>"Este es el texto del tercer post",
+            "publicado"=>true,
             "created_at"=>now(),
             "user_id"=>User::all()->random()->id,
             "category_id"=>Categories::all()->random()->id,

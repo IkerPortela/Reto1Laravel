@@ -40,10 +40,25 @@
                         </div>
                         
                         <div class="row mb-3">
-                            <label for="department_id" class="col-md-4 col-form-label text-md-end">{{ __('Id de Departamento') }}</label>
-
+                            <label for="department_id" class="col-md-4 col-form-label datalist-md-end">{{ __('Id de Departamento') }}</label>
+<!-- 
                             <div class="col-md-6">
-                                <input id="department_id" type="text" class="form-control" name="department_id" value="{{ old('department_id') }}" required autocomplete="department_id">
+                            <form>
+
+                            <select> 
+    <option value="0">Please Select</option>
+      
+            // while($row = mysql_fetch_assoc($get))
+            // {
+            //
+            // <option value = 
+            //     
+            // </option>
+            //
+            // }               
+    // </select>
+    //     </form> -->
+
                             </div>
                         </div>
 

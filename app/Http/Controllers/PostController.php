@@ -33,6 +33,7 @@ class PostController extends Controller
         $post->titulo = $request->titulo;
         $post->texto = $request->texto;
         $post->publicado = $request->has('publicado');
+        $post->user_id = $request->user()->id;
         $post->save();
         return redirect()->route('posts.index');
     }
