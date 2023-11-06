@@ -12,7 +12,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comments::all();
+        return view('comments.index',['comments' => $comments]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('comments.create');
     }
 
     /**
@@ -28,7 +29,12 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $commentary = new Comments();
+        $commentary->text = $request->text;
+        $commentary->usedTime = $request->usedTime;
+        $commentary->post_id = $request->post_id;
+        $commentary->save();
+        return redirect()->route('comments.index');
     }
 
     /**
@@ -44,7 +50,7 @@ class CommentsController extends Controller
      */
     public function edit(Comments $commentary)
     {
-        //
+        return view('comments.edit',['commentary'=>$commentary]);
     }
 
     /**
@@ -52,7 +58,10 @@ class CommentsController extends Controller
      */
     public function update(Request $request, Comments $commentary)
     {
-        //
+        $commentary->text = $request->text;
+        $commentary->usedTime = $request->usedTime;
+        $commentary->save();
+        return view('comments.show',['commentary'=>$commentary]);
     }
 
     /**
@@ -60,6 +69,7 @@ class CommentsController extends Controller
      */
     public function destroy(Comments $commentary)
     {
-        //
+        $commentary->delete();
+        return redirect()->route('comments.index');
     }
 }
