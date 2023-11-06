@@ -14,9 +14,19 @@ class CommentsSeeder extends Seeder
     public function run(): void
     {
         DB::table('comments')->insert([
-            "text"=>"Este es el texto del segundo post",
+            "text"=>"Este es el primer comentario",
             "usedTime"=>true,
-            "post_id"=>Post::all()->random()->id
+            "post_id"=>Post::first()->id
+        ]);
+        DB::table('comments')->insert([
+            "text"=>"Este es el segundo comentario",
+            "usedTime"=>true,
+            "post_id"=>Post::first()->id
+        ]);
+        DB::table('comments')->insert([
+            "text"=>"Este es el tercer comentario",
+            "usedTime"=>true,
+            "post_id"=>Post::first()->id
         ]);
     }
 }

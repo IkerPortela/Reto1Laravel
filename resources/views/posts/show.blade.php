@@ -19,9 +19,15 @@
 
 @section('content')
 <div class="container">
-<h1>{{$post->titulo}}</h1>
+<h1>{{$post->id}}</h1>
 <p>Creado el {{$post->created_at}}</p>
 <p>{{$post->texto}}</p>
+</div>
+
+<div class="container">
+    @foreach ($comments as $commentary)
+    <p>{{$commentary->text}}</p>
+    @endforeach
 </div>
 @endsection
 

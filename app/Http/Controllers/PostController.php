@@ -34,6 +34,8 @@ class PostController extends Controller
         $post->texto = $request->texto;
         $post->publicado = $request->has('publicado');
         $post->user_id = $request->user()->id;
+        $post->category_id = $request->category()->id;
+        $post->department_id = $request->department()->id;
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -62,6 +64,8 @@ class PostController extends Controller
         $post->titulo = $request->titulo;
         $post->texto = $request->texto;
         $post->publicado = $request->has('publicado');
+        $post->category_id = $request->category()->id;
+        $post->department_id = $request->department()->id;
         $post->save();
         return view('posts.show',['post'=>$post]);
     }

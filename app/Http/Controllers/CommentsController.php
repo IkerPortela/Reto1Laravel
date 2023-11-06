@@ -13,7 +13,7 @@ class CommentsController extends Controller
     public function index()
     {
         $comments = Comments::all();
-        return view('comments.index',['comments' => $comments]);
+        return view('posts.show',['comments' => $comments]);
     }
 
     /**
@@ -34,7 +34,7 @@ class CommentsController extends Controller
         $commentary->usedTime = $request->usedTime;
         $commentary->post_id = $request->post_id;
         $commentary->save();
-        return redirect()->route('comments.index');
+        return redirect()->route('posts.show');
     }
 
     /**
@@ -61,7 +61,7 @@ class CommentsController extends Controller
         $commentary->text = $request->text;
         $commentary->usedTime = $request->usedTime;
         $commentary->save();
-        return view('comments.show',['commentary'=>$commentary]);
+        return view('posts.show',['commentary'=>$commentary]);
     }
 
     /**
@@ -70,6 +70,6 @@ class CommentsController extends Controller
     public function destroy(Comments $commentary)
     {
         $commentary->delete();
-        return redirect()->route('comments.index');
+        return redirect()->route('posts.show');
     }
 }
