@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Department;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +24,11 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+    public function showRegistrationForm()
+{
+    $departments = Department::all();
+    return view('auth.register', compact('departments'));
+}
     /**
      * Where to redirect users after registration.
      *
@@ -36,7 +41,8 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+     public function __construct()
     {
         $this->middleware('guest');
     }
@@ -52,6 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'department_id' => ['required', 'exists:department,id'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -67,6 +74,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'department_id'=>($data['department_id']),	
             'password' => Hash::make($data['password']),
         ]);
     }

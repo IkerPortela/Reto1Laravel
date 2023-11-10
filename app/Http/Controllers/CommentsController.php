@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -29,18 +30,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        $commentary = new Comments();
-        $commentary->text = $request->text;
-        $commentary->usedTime = $request->usedTime;
-        $commentary->post_id = $request->post_id;
-        $commentary->save();
+        $comment = new Comments();
+        $comment->text = $request->text;
+        $comment->usedTime = $request->usedTime;
+        $comment->post_id = $request->post_id;
+        $comment->save();
         return redirect()->route('posts.show');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Comments $commentary)
+    public function show(Comments $comment)
     {
         //
     }
@@ -48,28 +49,28 @@ class CommentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comments $commentary)
+    public function edit(Comments $comment)
     {
-        return view('comments.edit',['commentary'=>$commentary]);
+        return view('comments.edit',['commentary'=>$comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comments $commentary)
+    public function update(Request $request, Comments $comment)
     {
-        $commentary->text = $request->text;
-        $commentary->usedTime = $request->usedTime;
-        $commentary->save();
-        return view('posts.show',['commentary'=>$commentary]);
+        $posts = Post::all();
+        $comment->text = $request->text;
+        $comment->save();
+        return view('posts.index',['posts'=>$posts]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comments $commentary)
+    public function destroy(Comments $comment)
     {
-        $commentary->delete();
-        return redirect()->route('posts.show');
+        $comment->delete();
+        return redirect()->route('posts.index');
     }
 }

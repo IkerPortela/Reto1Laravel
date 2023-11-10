@@ -41,24 +41,12 @@
                         
                         <div class="row mb-3">
                             <label for="department_id" class="col-md-4 col-form-label datalist-md-end">{{ __('Id de Departamento') }}</label>
-<!-- 
                             <div class="col-md-6">
-                            <form>
-
-                            <select> 
-    <option value="0">Please Select</option>
-      
-            // while($row = mysql_fetch_assoc($get))
-            // {
-            //
-            // <option value = 
-            //     
-            // </option>
-            //
-            // }               
-    // </select>
-    //     </form> -->
-
+                                <select name="department_id" id="department_id" class="form-control">
+                                    @foreach($departments as $department)
+                                        <option value="{{ old('department_id') }}">{{ $department->id }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

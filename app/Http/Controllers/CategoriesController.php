@@ -38,7 +38,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
         //
     }
@@ -46,27 +46,27 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
-        return view('categories.edit',['categories'=>$categories]);
+        return view('categories.edit',['category'=>$category]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, Categories $category)
     {
-        $categories->name = $request->name;
-        $categories->save();
+        $category->name = $request->name;
+        $category->save();
         return redirect()->route('categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
-        $categories->delete();
+        $category->delete();
         return redirect()->route('categories.index');
     }
 }

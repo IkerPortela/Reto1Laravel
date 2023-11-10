@@ -31,13 +31,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Departamentos') }}</a>
+                            <a class="nav-link" href="{{ route('departments.index') }}">{{ __('Departamentos') }}</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categorias') }}</a>
                         </li>
                         <li>
                             <a class="nav-link" href="{{ route('posts.index') }}">{{ __('Incidencias') }}</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="#">{{ __('Categorias') }}</a>
                         </li>
                     </ul>
 
@@ -119,8 +119,8 @@
     <div class="container">
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Departamentos</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Categorias</a></li>
+      <li class="nav-item"><a href="{{ route('departments.index') }}" class="nav-link px-2 text-body-secondary">Departamentos</a></li>
+      <li class="nav-item"><a href="{{ route('categories.index') }}" class="nav-link px-2 text-body-secondary">Categorias</a></li>
       <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link px-2 text-body-secondary">Incidencias</a></li>
     </ul>
     <p class="text-center text-body-secondary">© 2023 Compañia, S.A</p>

@@ -69,4 +69,9 @@ class DepartmentController extends Controller
         $department->delete();
         return redirect()->route('departments.index');
     }
+    public function selectInRegister()
+    {
+        $departments = Department::all();
+        return view('auth.register',['departments' => $departments]);
+    }
 }
