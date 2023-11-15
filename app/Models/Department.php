@@ -12,7 +12,7 @@ class Department extends Model
     public function user(): HasMany {
         return $this->hasMany(User::class);
         }
-    public function post(): HasMany {
-        return $this->hasMany(Post::class);
+    public function incidence(): HasMany {
+        return $this->hasMany(Incidence::class);
         }
 }

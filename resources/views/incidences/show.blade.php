@@ -19,16 +19,17 @@
 
 @section('content')
 <div class="container">
-<h1>{{$post->titulo}}</h1>
-<p>Creado el {{$post->created_at}}</p>
-<p>{{$post->texto}}</p>
+<h1>{{$incidence->titulo}}</h1>
+<p>Creado el {{$incidence->created_at}}</p>
+<b><p>Id de la Incidencia: {{$incidence->id}}</p></b>
+<p>{{$incidence->texto}}</p>
 <div class="container my-5 py-5">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10">
         <div class="card text-dark">
           <div class="card-body p-4">
             <h4 class="mb-4 pb-2">Comentarios</h4>
-            @foreach($post->comments as $commentary)
+            @foreach($incidence->comments as $commentary)
             <hr class="my-0" style="height: 3px;" />
             <div class="d-flex flex-start">
               <img class="rounded-circle shadow-1-strong me-3"
@@ -39,6 +40,7 @@
                 {{$commentary->text}}
                 </p>
                 @auth
+                @if($commentary->user_id === Auth::user()->id)
     <div class="d-flex flex-row">
         <a class="list-group-item list-group-item-action d-flex gap-3 py-3 btn btn-warning btn-sm" href="{{route('comments.edit',$commentary)}}"
         role="button">Editar Comentario</a>
@@ -53,11 +55,16 @@
     </div>
  
 </li>
+        @endif
         @endauth
             </div>
           </div>
           @endforeach
         </div>
+        @auth
+        <a class="btn btn-primary" href="{{route('comments.create')}}"
+    role="button">Publicar comentario</a>
+        @endauth
       </div>
     </div>
   </div>

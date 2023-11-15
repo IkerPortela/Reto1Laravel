@@ -19,19 +19,20 @@
     @section('content')
     <h1 style="text-align: center">INCIDENCIAS</h1>
     <ul style="list-style: none;">
-{{--esto es un comentario: recorremos el listado de posts--}}
-@foreach ($posts as $post)
-{{-- visualizamos los atributos del objeto --}}
+
+@foreach ($incidences as $incidence)
+
 <li class="pt-1">
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="list-group">
-    <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> {{$post->titulo}}</a>
-    <p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">Escrito el {{$post->created_at}}</p>
+    <b><a href="{{route('incidences.show',$incidence)}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> {{$incidence->titulo}}</a></b>
+    <p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">Escrito el {{$incidence->created_at}}</p>
     @auth
+    @if($incidence->user_id === Auth::user()->id)
     <div class="d-flex flex-row">
-        <a class="list-group-item list-group-item-action d-flex gap-3 py-3 btn btn-warning btn-sm" href="{{route('posts.edit',$post)}}"
+        <a class="list-group-item list-group-item-action d-flex gap-3 py-3 btn btn-warning btn-sm" href="{{route('incidences.edit',$incidence)}}"
         role="button">Editar Incidencia</a>
-        <form action="{{route('posts.destroy',$post)}}" method="POST"
+        <form action="{{route('incidences.destroy',$incidence)}}" method="POST"
         enctype="multipart/form-data">
     @csrf
     @method('DELETE')
@@ -42,10 +43,12 @@
     </div>
  
 </li>
+        @endif
         @endauth
+        
 @endforeach
         @auth
-        <a class="btn btn-primary" href="{{route('posts.create')}}"
+        <a class="btn btn-primary" href="{{route('incidences.create')}}"
     role="button">Crear una nueva incidendia</a>
         @endauth
         </ul>

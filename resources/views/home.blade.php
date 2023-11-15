@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <h1 style="text-align:center">Bienvenido</h1>
         @auth
             <div class="card">
                 <div class="card-header">{{ __('Mensaje') }}</div>               
@@ -21,13 +22,29 @@
         </div>
     </div>
 </div>
+<ul>
+    <div>
+    @auth
+    <h2>Tus incidencias:</h2>
+    @forelse ($incidences as $incidence)
+        @if($incidence->user_id === Auth::user()->id)
+        <li>
+        <a href="{{route('incidences.show',$incidence)}}"> {{$incidence->titulo}}</a>.
+        Escrito el {{$incidence->created_at}}
+        </li>
+        @endif
+        @empty
+        <p>No has redactado ninguna incidencia</p>
+    @endforelse
 
-<h1 style="text-align:center">Bienvenido</h1>
+    @endauth
+</ul>
+</div>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
     Lista de links
   </a>
-  <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action">Acceder a las departamento</a>
+  <a href="{{route('incidences.index')}}" class="list-group-item list-group-item-action">Acceder a las departamento</a>
   <a href="#" class="list-group-item list-group-item-action">Acceder a las categorias</a>
   <a class="list-group-item list-group-item-action disabled" aria-disabled="true">Acceder a las incidencias</a>
 </div>

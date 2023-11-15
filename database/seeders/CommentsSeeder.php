@@ -16,17 +16,20 @@ class CommentsSeeder extends Seeder
         DB::table('comments')->insert([
             "text"=>"Este es el primer comentario",
             "usedTime"=>true,
-            "post_id"=>Post::first()->id
+            "incidence_id"=> 1,
+            "user_id"=> 1
         ]);
         DB::table('comments')->insert([
             "text"=>"Este es el segundo comentario",
             "usedTime"=>true,
-            "post_id"=>Post::first()->id
+            "incidence_id"=> 3,
+            "user_id"=> 1
         ]);
         DB::table('comments')->insert([
             "text"=>"Este es el tercer comentario",
             "usedTime"=>true,
-            "post_id"=>Post::first()->id
+            "incidence_id"=> 2,
+            "user_id"=> 2
         ]);
     }
 }

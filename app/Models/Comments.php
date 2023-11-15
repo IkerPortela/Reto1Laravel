@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comments extends Model
 {
     use HasFactory;
-    public function post(): BelongsTo{
-        return $this->belongsTo(Post::class, 'id');
+    public function incidence(){
+        return $this->belongsTo(Incidence::class)->onDelete('cascade');
     }
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+        }
 }

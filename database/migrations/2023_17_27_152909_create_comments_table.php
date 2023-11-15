@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->time('usedTime')->nullable;
-            $table->unsignedBigInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->time('usedTime')->nullable();
+            $table->unsignedBigInteger('incidence_id');
+            $table->foreign('incidence_id')->references('id')->on('incidences');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
 
         });

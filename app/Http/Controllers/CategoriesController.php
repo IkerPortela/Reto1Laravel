@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Incidence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+
 
 class CategoriesController extends Controller
 {
@@ -40,7 +43,8 @@ class CategoriesController extends Controller
      */
     public function show(Categories $category)
     {
-        //
+        $incidences = Incidence::where('category_id', $category->id)->get();
+        return view('incidences.index',['incidences'=>$incidences]);
     }
 
     /**

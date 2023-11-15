@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Categories extends Model
 {
     use HasFactory;
-    public function post(): HasMany {
-        return $this->hasMany(Post::class);
+    public function incidence(): HasMany {
+        return $this->hasMany(Incidence::class);
         }
 }

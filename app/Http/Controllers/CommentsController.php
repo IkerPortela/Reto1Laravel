@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
-use App\Models\Post;
+use App\Models\Incidence;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -14,7 +14,7 @@ class CommentsController extends Controller
     public function index()
     {
         $comments = Comments::all();
-        return view('posts.show',['comments' => $comments]);
+        return view('incidences.show',['comments' => $comments]);
     }
 
     /**
@@ -33,9 +33,10 @@ class CommentsController extends Controller
         $comment = new Comments();
         $comment->text = $request->text;
         $comment->usedTime = $request->usedTime;
-        $comment->post_id = $request->post_id;
+        $comment->incidence_id = $request->incidence_id;
+        $comment->user_id = auth()->id();
         $comment->save();
-        return redirect()->route('posts.show');
+        return redirect()->route('incidences.index');
     }
 
     /**
@@ -59,10 +60,10 @@ class CommentsController extends Controller
      */
     public function update(Request $request, Comments $comment)
     {
-        $posts = Post::all();
+        $incidences = Incidence::all();
         $comment->text = $request->text;
         $comment->save();
-        return view('posts.index',['posts'=>$posts]);
+        return view('incidences.index',['incidences'=>$incidences]);
     }
 
     /**
@@ -71,6 +72,6 @@ class CommentsController extends Controller
     public function destroy(Comments $comment)
     {
         $comment->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('incidences.index');
     }
 }

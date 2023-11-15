@@ -13,9 +13,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function post(): HasMany {
-        return $this->hasMany(Post::class);
+    public function incidence(): HasMany {
+        return $this->hasMany(Incidence::class);
         }
+        public function comments(): HasMany {
+            return $this->hasMany(Comments::class);
+            }
     public function departments(): BelongsTo {
         return $this->belongsTo(Department::class);
         }
@@ -27,7 +30,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'department_id',
+        // 'department_id',
         'password',
     ];
 

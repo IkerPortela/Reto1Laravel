@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\IncidenceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -23,7 +24,12 @@ Route::get('/', function () {
 });
 Route::middleware(['auth'])->group(function () {
     Route::resources([
-    '/posts' => PostController::class,
+    '/' => HomeController::class,
+    ]);
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+    '/incidences' => IncidenceController::class,
     ]);
 });
 
@@ -42,9 +48,9 @@ Route::middleware(['auth'])->group(function () {
     '/comments' => CommentsController::class,
     ]);
 });
-    Route::controller(PostController::class)->group(function () {
-        Route::get('/posts', 'index')->name('posts.index');
-        Route::get('/posts/{post}', 'show')->name('posts.show');
+    Route::controller(IncidenceController::class)->group(function () {
+        Route::get('/incidences', 'index')->name('incidences.index');
+        Route::get('/incidences/{incidence}', 'show')->name('incidences.show');
         })->withoutMiddleware([Auth::class]);
     
     Route::controller(DepartmentController::class)->group(function () {

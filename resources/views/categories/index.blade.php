@@ -23,8 +23,8 @@
 <li class="pt-1">
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="list-group">
-    <p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">{{$category->name}}</p>
-    <a href="{{route('categories.index')}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> Ver Incidencias</a>
+    <b><p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">{{$category->name}}</p></b>
+    <a href="{{route('categories.show', $category)}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> Ver Incidencias</a>
 
     <div class="d-flex flex-row">
     @auth
