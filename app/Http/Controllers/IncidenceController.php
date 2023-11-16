@@ -32,8 +32,8 @@ class IncidenceController extends Controller
     public function store(Request $request)
     {
         $incidence = new Incidence();
-        $incidence->titulo = $request->titulo;
-        $incidence->texto = $request->texto;
+        $incidence->title = $request->titulo;
+        $incidence->text = $request->texto;
         $incidence->publicado = $request->has('publicado');
         $incidence->user_id = $request->user()->id;
         $incidence->category_id = $request->category_id;
@@ -64,8 +64,8 @@ class IncidenceController extends Controller
      */
     public function update(Request $request, Incidence $incidence)
     {
-        $incidence->titulo = $request->titulo;
-        $incidence->texto = $request->texto;
+        $incidence->title = $request->titulo;
+        $incidence->text = $request->texto;
         $incidence->publicado = $request->has('publicado');
         $incidence->category_id = $request->category_id;
         $incidence->department_id = $request->department_id;

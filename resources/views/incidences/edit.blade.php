@@ -4,10 +4,10 @@
     <form class="mt-2" name="create_platform" action="{{route('incidences.update',$incidence)}}" method="POST"
         enctype="multipart/form-data"> @csrf @method('PUT') <div class="form-group mb-3"> <label for="titulo"
         class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="titulo" name="titulo" required value="{{$incidence->titulo}}"/> </div>
+        <input type="text" class="form-control" id="titulo" name="titulo" required value="{{$incidence->title}}"/> </div>
         <div class="form-group mb-3"> <label for="texto" class="form-label">Texto</label> <textarea type="textarea"
             rows="5" class="form-control" id="texto" name="texto">
-            {{$incidence->texto}}
+            {{$incidence->text}}
             </textarea>
         </div>
         <div class="form-group mb-3">

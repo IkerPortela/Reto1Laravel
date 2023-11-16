@@ -5,12 +5,12 @@
             action="{{route('incidences.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">
-            <label for="titulo" class="form-label">Titulo</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" required/>
+            <label for="title" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="title" name="title" required/>
         </div>
         <div class="form-group mb-3">
-            <label for="texto" class="form-label">Texto</label>
-            <textarea type="textarea" rows="5" class="form-control" id="texto" name="texto">
+            <label for="text" class="form-label">Texto</label>
+            <textarea type="textarea" rows="5" class="form-control" id="text" name="text">
             </textarea>
         </div>
         <div class="form-group mb-3">

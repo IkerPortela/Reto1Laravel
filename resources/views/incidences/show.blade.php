@@ -19,10 +19,10 @@
 
 @section('content')
 <div class="container">
-<h1>{{$incidence->titulo}}</h1>
+<h1>{{$incidence->title}}</h1>
 <p>Creado el {{$incidence->created_at}}</p>
 <b><p>Id de la Incidencia: {{$incidence->id}}</p></b>
-<p>{{$incidence->texto}}</p>
+<p>{{$incidence->text}}</p>
 <div class="container my-5 py-5">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10">

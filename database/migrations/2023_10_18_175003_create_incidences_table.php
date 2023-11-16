@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('incidences', function (Blueprint $table) {
             $table->id();
-            $table->string("titulo",128);
-            $table->string("texto",5000);
+            $table->string("title",128);
+            $table->string("text",5000);
             $table->boolean("publicado");
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
