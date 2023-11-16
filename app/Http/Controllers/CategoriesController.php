@@ -71,6 +71,6 @@ class CategoriesController extends Controller
     public function destroy(Categories $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Se ha borrado la categoria con sus incidencias asignadas');
     }
 }

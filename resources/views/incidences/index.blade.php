@@ -19,7 +19,11 @@
     @section('content')
     <h1 style="text-align: center">INCIDENCIAS</h1>
     <ul style="list-style: none;">
-
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 @foreach ($incidences as $incidence)
 
 <li class="pt-1">

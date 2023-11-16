@@ -19,6 +19,17 @@
     @section('content')
     <h1 style="text-align: center">DEPARTAMENTOS</h1>
     <ul style="list-style: none;">
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 @foreach ($departments as $department)
 <li class="pt-1">
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">

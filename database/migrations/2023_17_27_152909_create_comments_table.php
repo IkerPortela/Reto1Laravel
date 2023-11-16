@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('text');
             $table->time('usedTime')->nullable();
-            $table->unsignedBigInteger('incidence_id');
-            $table->foreign('incidence_id')->references('id')->on('incidences');
+            $table->unsignedBigInteger('incidence_id')->onDelete('cascade');
+            $table->foreign('incidence_id')->references('id')->on('incidences')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

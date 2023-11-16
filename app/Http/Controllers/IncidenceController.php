@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Incidence;
 use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IncidenceController extends Controller
 {
@@ -13,7 +14,7 @@ class IncidenceController extends Controller
      */
     public function index()
     {
-        $incidences = Incidence::all();
+        $incidences = Incidence::orderBy('created_at', 'desc')->get();
         return view('incidences.index',['incidences' => $incidences]);
     }
 
@@ -77,8 +78,8 @@ class IncidenceController extends Controller
      */
     public function destroy(Incidence $incidence)
     {
-        $incidence->delete();
-        return redirect()->route('incidences.index');
+        DB::delete('delete from incidences where id = :id', ['id' =>$incidence->id]);
+        return redirect()->route('incidences.index') ->with('success', 'Se ha borrado la incidencia con sus comentarios');;;
 
     }
 }

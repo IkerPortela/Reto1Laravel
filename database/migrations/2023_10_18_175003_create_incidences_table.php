@@ -18,10 +18,10 @@ return new class extends Migration
             $table->boolean("publicado");
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->unsignedBigInteger('category_id')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id')->onDelete('restrict');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('restrict');
             $table->softDeletes();
             $table->timestamps();
         });

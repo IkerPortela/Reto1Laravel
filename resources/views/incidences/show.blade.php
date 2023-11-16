@@ -29,7 +29,7 @@
         <div class="card text-dark">
           <div class="card-body p-4">
             <h4 class="mb-4 pb-2">Comentarios</h4>
-            @foreach($incidence->comments as $commentary)
+            @forelse($incidence->comments as $commentary)
             <hr class="my-0" style="height: 3px;" />
             <div class="d-flex flex-start">
               <img class="rounded-circle shadow-1-strong me-3"
@@ -59,7 +59,9 @@
         @endauth
             </div>
           </div>
-          @endforeach
+          @empty
+          <p>No hay comentarios</p>
+          @endforelse
         </div>
         @auth
         <a class="btn btn-primary" href="{{route('comments.create')}}"

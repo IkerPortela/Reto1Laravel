@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Incidence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DepartmentController extends Controller
 {
@@ -68,8 +69,14 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
+        $actionSuccessful = true;
+             if($department->incidence()->exists()){
+                $actionSuccessful = false;
+                 return redirect()->route('departments.index')->with('error', 'No se puede borrar un departamento con incidencias asociadas');
+             }
         $department->delete();
-        return redirect()->route('departments.index');
+        return redirect()->route('departments.index')->with('success', 'Se ha borrado el departamento');
+        
     }
     public function selectInRegister()
     {

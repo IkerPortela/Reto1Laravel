@@ -4,7 +4,7 @@
     <form class="mt-2" name="create_platform" action="{{route('categories.update',$category)}}" method="POST"
         enctype="multipart/form-data"> @csrf @method('PUT') <div class="form-group mb-3"> <label for="name"
         class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="name" name="name" required value="{{$categories->name}}"/> </div>
+        <input type="text" class="form-control" id="name" name="name" required value="{{$category->name}}"/> </div>
         <button type="submit" class="btn btn-primary" name="">Actualizar</button>
     </form>
 </div>
