@@ -24,7 +24,7 @@
         {{ session('success') }}
     </div>
 @endif
-@foreach ($categories as $category)
+@forelse ($categories as $category)
 <li class="pt-1">
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="list-group">
@@ -47,7 +47,9 @@
  
 </li>
         @endauth
-@endforeach
+        @empty
+        <h5 style= "text-align:center">No hay categorias</h5>
+        @endforelse
         @auth
         <a class="btn btn-primary" href="{{route('categories.create')}}"
     role="button">Crear un nuevo departamento</a>
