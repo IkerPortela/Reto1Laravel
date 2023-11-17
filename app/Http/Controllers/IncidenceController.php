@@ -32,8 +32,8 @@ class IncidenceController extends Controller
     public function store(Request $request)
     {
         $incidence = new Incidence();
-        $incidence->title = $request->titulo;
-        $incidence->text = $request->texto;
+        $incidence->title = $request->title;
+        $incidence->text = $request->text;
         $incidence->publicado = $request->has('publicado');
         $incidence->user_id = $request->user()->id;
         $incidence->category_id = $request->category_id;
