@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incidence;
+use App\Models\Department;
 use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class IncidenceController extends Controller
@@ -13,7 +15,12 @@ class IncidenceController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        if(Auth::check()){
+        $department = Department::find(Auth::user()->department_id);
+        $incidences = Incidence::orderBy('created_at', 'desc')->get();
+        return view('incidences.index',['incidences' => $incidences, 'department'=> $department]);
+        }
         $incidences = Incidence::orderBy('created_at', 'desc')->get();
         return view('incidences.index',['incidences' => $incidences]);
     }
@@ -37,7 +44,7 @@ class IncidenceController extends Controller
         $incidence->publicado = $request->has('publicado');
         $incidence->user_id = $request->user()->id;
         $incidence->category_id = $request->category_id;
-        $incidence->department_id = $request->department_id;
+        $incidence->department_id = $request->user()->department_id;
         $incidence->save();
         return redirect()->route('incidences.index');
     }

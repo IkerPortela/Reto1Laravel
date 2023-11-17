@@ -24,6 +24,14 @@
             {{ session('success') }}
         </div>
     @endif
+    @auth
+        @if($department->id === Auth::user()->department_id)
+        <div class="d-flex flex-column flex-md-row p-1 gap-1 py-md-1 align-items-center justify-content-center">
+        <a class="btn btn-primary" style="text-align: center" href="{{route('incidences.create')}}"
+    role="button">Crear una nueva incidendia</a>
+</div>
+    @endif    
+    @endauth
 @forelse ($incidences as $incidence)
 
 <li class="pt-1">
@@ -52,10 +60,6 @@
         @empty
         <h5 style= "text-align:center">No hay ninguna incidencia</h5>
 @endforelse
-        @auth
-        <a class="btn btn-primary" href="{{route('incidences.create')}}"
-    role="button">Crear una nueva incidendia</a>
-        @endauth
         </ul>
         @endsection
     </body>

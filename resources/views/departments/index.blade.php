@@ -30,12 +30,18 @@
         {{ session('error') }}
     </div>
 @endif
+@auth  
+        <div class="d-flex flex-column flex-md-row p-1 gap-1 py-md-1 align-items-center justify-content-center">
+        <a class="btn btn-primary" href="{{route('departments.create')}}"
+    role="button">Crear un nuevo departamento</a>
+</div>
+    @endauth
 @forelse ($departments as $department)
 <li class="pt-1">
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="list-group">
-    <b><p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">{{$department->name}}</p></b>
-    <a href="{{route('departments.show', $department)}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> Ver Incidencias</a>
+    <i><p class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">{{$department->name}}</p></i>
+    <b><a href="{{route('departments.show', $department)}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true"> Ver Incidencias</a></b>
 
     <div class="d-flex flex-row">
     @auth
@@ -56,10 +62,6 @@
         @empty
         <h5 style= "text-align:center">No hay departamentos</h5>
 @endforelse
-        @auth
-        <a class="btn btn-primary" href="{{route('departments.create')}}"
-    role="button">Crear un nuevo departamento</a>
-        @endauth
         </ul>
         @endsection
     </body>

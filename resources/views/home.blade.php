@@ -23,7 +23,6 @@
     </div>
 </div>
 <ul>
-    <div>
     @auth
     <h2>Tus incidencias:</h2>
     @forelse ($incidences as $incidence)
@@ -34,12 +33,10 @@
         </li>
         @endif
         @empty
-        <p>No has redactado ninguna incidencia</p>
+        <li>No has redactado ninguna incidencia</li>
     @endforelse
-
     @endauth
 </ul>
-</div>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
     Lista de links

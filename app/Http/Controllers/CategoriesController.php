@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Incidence;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
 
 
@@ -43,8 +45,9 @@ class CategoriesController extends Controller
      */
     public function show(Categories $category)
     {
+        $department = Department::find(Auth::user()->department_id);
         $incidences = Incidence::where('category_id', $category->id)->get();
-        return view('incidences.index',['incidences'=>$incidences]);
+        return view('incidences.index',['incidences'=>$incidences, 'department'=>$department]);
     }
 
     /**

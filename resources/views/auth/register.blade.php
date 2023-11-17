@@ -39,16 +39,19 @@
                             </div>
                         </div>
                         
-                        <!-- <div class="row mb-3">
-                            <label for="department_id" class="col-md-4 col-form-label datalist-md-end">{{ __('Id de Departamento') }}</label>
+                        <div class="row mb-3">
+                            <label for="department_id" class="col-md-4 col-form-label text-md-end">{{ __('Id de Departamento') }}</label>
+
                             <div class="col-md-6">
-                                <select name="department_id" id="department_id" class="form-control">
-                                    @foreach($departments as $department)
-                                        <option value="{{ old('department_id') }}">{{ $department->id }}</option>
-                                    @endforeach
-                                </select>
+                                <input id="department_id" type="text" class="form-control @error('department_id') is-invalid @enderror" name="department_id" value="{{ old('department_id') }}" required autocomplete="department_id">
+
+                                @error('department_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>

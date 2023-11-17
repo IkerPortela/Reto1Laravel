@@ -14,12 +14,8 @@
             </textarea>
         </div>
         <div class="form-group mb-3">
-            <label for="category_id" class="form-label">Id de Categoria (1 = Baja, 2 = Media, 3 = Alta)</label>
+            <label for="category_id" class="form-label">Id de Categoria (1 = Critica, 2 = Imprevista, 3 = Menor)</label>
             <input type="text" class="form-control" id="category_id" name="category_id" required/>
-        </div>
-        <div class="form-group mb-3">
-            <label for="department_id" class="form-label">Id de Departamento (1 = Informatica, 2 = Veterinaria, 3 = Mecanica)</label>
-            <input type="text" class="form-control" id="department_id" name="department_id" required/>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="publicado"

@@ -17,7 +17,7 @@ class IncidenceSeeder extends Seeder
             "text"=>"En el departamento de mecanica se encuentra una falta de materiales que a la larga puede ser notoria, arreglen esto cuanto antes.",
             "publicado"=>true,
             "created_at"=>now(),
-            "user_id"=> 1,
+            "user_id"=> 4,
             "category_id"=> 2,
             "department_id"=> 3
         ]);

@@ -33,5 +33,26 @@ class UserSeeder extends Seeder
             "password"=>Hash::make('12121212'),
             "department_id"=>"3"
         ]);
+
+        DB::table('users')->insert([     
+            "name"=>"Usuario4", 
+            "email"=>"iker.ortelapl@elorrieta-errekamari.com",
+            "password"=>Hash::make('12121212'),
+            "department_id"=>"3"
+        ]);
+
+        DB::table('users')->insert([     
+            "name"=>"Usuario5", 
+            "email"=>"ikerprtela@gmail.com",
+            "password"=>Hash::make('12121212'),
+            "department_id"=>"2"
+        ]);
+
+        DB::table('users')->insert([     
+            "name"=>"Usuario6", 
+            "email"=>"ikerptela@gmail.com",
+            "password"=>Hash::make('12121212'),
+            "department_id"=>"1"
+        ]);
     }
 }
